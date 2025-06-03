@@ -1,9 +1,10 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import session from "express-session";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes";
+import creditSafeRoutes from "./routes/creditsafeRoutes";
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use(
 );
 
 app.use("/api/auth", authRoutes);
+app.use("/api/creditsafe", creditSafeRoutes);
 
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
