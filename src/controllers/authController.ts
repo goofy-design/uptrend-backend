@@ -36,7 +36,7 @@ export const login = async (req: Request, res: Response): Promise<void> => {
   }
 
   req.session.user = data.user;
-  res.json({ message: "Login successful", user: data.user });
+  res.json({ message: "Login successful", user: data });
 };
 
 export const logout = (req: Request, res: Response): void => {
