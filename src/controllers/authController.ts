@@ -11,14 +11,15 @@ declare module "express-session" {
 export const signup = async (req: Request, res: Response): Promise<void> => {
   const { email, password } = req.body;
 
-  const { error } = await supabase.auth.signUp({ email, password });
-  if (error) {
-    res.status(400).json({ error: error.message });
+  const data = await supabase.auth.signUp({ email, password });
+  if (data.error) {
+    res.status(400).json({ error: data.error.message });
     return;
   }
 
   res.json({
-    message: "Signup successful. Check your email for verification."
+    message: "Signup successful",
+    user: data
   });
 };
 
